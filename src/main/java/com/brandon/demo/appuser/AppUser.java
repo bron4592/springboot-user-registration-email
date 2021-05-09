@@ -19,14 +19,14 @@ import java.util.Collections;
 @Entity
 public class AppUser implements UserDetails {
 
-    @SequenceGenerator(name = "student_sequence",
-            sequenceName = "student _sequence",
+    @SequenceGenerator(name = "user_sequence",
+            sequenceName = "user_sequence",
             allocationSize = 1
     )
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            generator = "user_sequence"
     )
     private long id;
     private String name;
