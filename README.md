@@ -1,4 +1,4 @@
-# springboot-user-registration-email
+# Springboot User Registration Email System
 
 Functional backend system that allows a user to be created via email verification.
 Verification link sent to email expires in 15 minutes.
