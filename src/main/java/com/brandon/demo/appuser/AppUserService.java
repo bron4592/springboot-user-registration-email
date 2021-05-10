@@ -30,13 +30,26 @@ public class AppUserService implements UserDetailsService {
     public String signUpUser(AppUser appUser){
         boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
 
-        if (userExists && appUser.getEnabled()){
-            throw new IllegalStateException("email already taken");
-        }
-        else if (userExists && !appUser.getEnabled()){
-            // TODO: Implement new token for the user
-            String message = "Resending Confirmation Email";
-            return message;
+
+        if (userExists){
+            UserDetails currentUser = loadUserByUsername(appUser.getEmail());
+            if (currentUser.isEnabled()) {
+                throw new IllegalStateException("email already taken");
+            }
+            else {
+                AppUser current = appUserRepository.findByEmail(appUser.getEmail()).orElse(null);
+                String token = UUID.randomUUID().toString();
+                ConfirmationToken confirmationToken = new ConfirmationToken(
+                        token,
+                        LocalDateTime.now(),
+                        LocalDateTime.now().plusMinutes(15),
+                        current
+                );
+                confirmationTokenService.saveConfirmationToken(confirmationToken);
+                return token;
+            }
+
+
         }
         else {
             String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
