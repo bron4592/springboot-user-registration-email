@@ -35,7 +35,7 @@ An email is then sent to user <br>
 
 
 ## User Verification
-After clicking the link, the user is verified within the database and login. <br>
+After clicking the link, the user is verified within the database and can login. <br>
 <img width="400" alt="Screen Shot 2021-05-09 at 9 53 28 PM" src="https://user-images.githubusercontent.com/25212189/117612034-fef51600-b110-11eb-8b87-45fdeff9991d.png">
 
 ## TODO:
