@@ -4,12 +4,13 @@ Functional backend system that allows a user to be created via email verificatio
 Verification link sent to email expires in 15 minutes.
 Postgres backend
 Spring Boot Dependencies:
-- Lombok
+
 - Spring Web
 - Spring Security
 - Postgre SQL Driver
 - Spring Data JPA
 - Java Mail Sender
+- Lombok
 
 # Diagram
 <img width="685" alt="Screen Shot 2021-05-09 at 9 47 12 PM" src="https://user-images.githubusercontent.com/25212189/117611577-344d3400-b110-11eb-8b01-5dbbc861e3da.png">
