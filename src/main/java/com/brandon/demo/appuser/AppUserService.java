@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -38,7 +37,6 @@ public class AppUserService implements UserDetailsService {
                 throw new IllegalStateException("email already taken");
             }
             else {
-                // TODO: Implement new token for the user
                 AppUser current = appUserRepository.findByEmail(appUser.getEmail()).orElse(null);
                 String token = UUID.randomUUID().toString();
                 ConfirmationToken confirmationToken = new ConfirmationToken(
@@ -48,7 +46,7 @@ public class AppUserService implements UserDetailsService {
                         current
                 );
                 confirmationTokenService.saveConfirmationToken(confirmationToken);
-                return "Resending Confirmation Email";
+                return token;
             }
 
 
